@@ -1,12 +1,4 @@
 /*
-Courier Management System
-Technical Constraints:
-- Node.js
-- In-memory persistence
-- No external APIs
-- Focus on domain logic
-*/
-/*
  Courier Management System
  Technical Constraints:
  - Node.js
