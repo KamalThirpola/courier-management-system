@@ -66,3 +66,6 @@ Modeled real-world constraints through explicit state transitions
 On order creation, the system automatically assigns the nearest eligible courier using a deterministic Manhattan distance formula.  
 Express orders are assigned only within a defined distance threshold.  
 If no courier is eligible, the order remains unassigned with a clear reason returned.
+
+### Concurrency & Data Safety
+Courier assignment is performed atomically using in-memory locking to prevent race conditions where a courier could be assigned to multiple orders concurrently.
