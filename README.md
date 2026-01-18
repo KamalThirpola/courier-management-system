@@ -49,3 +49,10 @@ git remote add origin <your-repo-url>
 git push -u origin main
 
 Built a Courier Management System in Node.js using in-memory persistence, enforcing strict domain rules such as single active order per courier. (GitHub)
+## Sample Output
+
+```text
+Courier Amit assigned to order O1
+Courier Neha assigned to order O2
+Order O1 completed
+Courier Amit assigned to order O2
