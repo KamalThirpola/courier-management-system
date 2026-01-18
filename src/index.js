@@ -6,53 +6,59 @@ Technical Constraints:
 - No external APIs
 - Focus on domain logic
 */
-const { findNearestCourier } = require("./assignment");
+/*
+ Courier Management System
+ Technical Constraints:
+ - Node.js
+ - In-memory persistence
+ - No external APIs
+ - Focus on domain logic
+*/
+
+const { simulateMovement } = require("./movement");
+
+// In-memory couriers
 const couriers = [
   {
     id: "C1",
     name: "Amit",
     location: { x: 1, y: 2 },
-    isAvailable: true,
-    isLocked: false,        
-    activeOrderId: null
+    isAvailable: false,
+    activeOrderId: "O1"
   },
   {
     id: "C2",
     name: "Neha",
     location: { x: 5, y: 3 },
     isAvailable: true,
-    isLocked: false,        
     activeOrderId: null
   }
 ];
-function createOrder(order) {
-  // pick only unlocked + available couriers
-  const courier = couriers.find(
-    c => c.isAvailable && !c.isLocked
-  );
 
-  if (!courier) {
-    console.log("Order unassigned: No available courier (concurrent requests)");
-    return {
-      status: "UNASSIGNED",
-      reason: "No available courier due to concurrent assignments"
-    };
+// In-memory orders
+const orders = [
+  {
+    id: "O1",
+    pickupLocation: { x: 2, y: 3 },
+    dropLocation: { x: 6, y: 6 },
+    status: "ASSIGNED"
   }
+];
 
-  // 🔒 LOCK courier immediately (atomic step)
-  courier.isLocked = true;
+// Background tick simulation
+function tick() {
+  const courier = couriers.find(c => c.activeOrderId);
+  const order = orders.find(o => o.id === courier?.activeOrderId);
 
-  // assignment
-  courier.isAvailable = false;
-  courier.activeOrderId = order.id;
+  if (courier && order) {
+    simulateMovement(courier, order);
+    console.log(
+      `Courier at (${courier.location.x}, ${courier.location.y}) | Order status: ${order.status}`
+    );
+  }
+}
 
-  console.log(`Courier ${courier.name} assigned to order ${order.id}`);
-
-  // 🔓 UNLOCK after assignment
-  courier.isLocked = false;
-
-  return {
-    status: "ASSIGNED",
-    courierId: courier.id
-  };
+// simulate multiple ticks
+for (let i = 0; i < 10; i++) {
+  tick();
 }
