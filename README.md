@@ -56,3 +56,8 @@ Courier Amit assigned to order O1
 Courier Neha assigned to order O2
 Order O1 completed
 Courier Amit assigned to order O2
+Courier Management System | Node.js
+Designed and implemented a courier management system focusing on core domain logic
+Enforced single active order per courier using in-memory persistence
+Modeled real-world constraints through explicit state transitions
+🔗 GitHub: https://github.com/KamalThirpola/courier-management-system
