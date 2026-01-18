@@ -8,18 +8,14 @@ function moveOneStep(courier, target) {
 function simulateMovement(courier, order) {
   if (order.status === "ASSIGNED") {
     moveOneStep(courier, order.pickupLocation);
-
     if (
       courier.location.x === order.pickupLocation.x &&
       courier.location.y === order.pickupLocation.y
     ) {
       order.status = "PICKED_UP";
     }
-  }
-
-  if (order.status === "PICKED_UP") {
+  } else if (order.status === "PICKED_UP") {
     moveOneStep(courier, order.dropLocation);
-
     if (
       courier.location.x === order.dropLocation.x &&
       courier.location.y === order.dropLocation.y
