@@ -82,3 +82,7 @@ Courier assignment is performed atomically using in-memory locking to prevent ra
 - An order progresses to the next state only when the courier physically reaches the required location.
 - Manual or forced state jumps are prevented by design.
 - Once an order is delivered, the courier is automatically marked available for new assignments.
+### Architecture
+- index.js: Application orchestration
+- assignment.js: Courier selection & auto-assignment logic
+- movement.js: Courier movement & order state progression
