@@ -61,3 +61,8 @@ Designed and implemented a courier management system focusing on core domain log
 Enforced single active order per courier using in-memory persistence
 Modeled real-world constraints through explicit state transitions
 🔗 GitHub: https://github.com/KamalThirpola/courier-management-system
+
+## Auto-Assignment Logic
+On order creation, the system automatically assigns the nearest eligible courier using a deterministic Manhattan distance formula.  
+Express orders are assigned only within a defined distance threshold.  
+If no courier is eligible, the order remains unassigned with a clear reason returned.
