@@ -1,2 +1,51 @@
-# courier-management-system
-node.js based courier and order management system focusing on domain logic
+# Courier Management System
+
+## Overview
+A Node.js based Courier Management System designed to focus on core domain logic.
+The system manages a fixed pool of couriers and enforces the rule that one courier
+can handle only one active order at a time.
+
+## Technical Constraints
+- Language: Node.js (Express-style structure)
+- Persistence: In-memory data structures
+- No external APIs or managed services
+- Focus on business rules, not deployment
+
+## Core Features
+- Fixed pool of couriers with unique ID and location
+- Availability tracking for each courier
+- Single active order per courier enforced
+- Order lifecycle management
+
+## Key Domain Rules
+- A courier can be assigned to only one active order
+- Orders remain pending if no courier is available
+- Courier becomes available only after order completion
+
+## Project Structure
+- couriers/: Courier domain logic
+- orders/: Order domain logic
+- utils/: Helper functions
+- index.js: Application entry point
+
+## How to Run
+```bash
+npm install
+node src/index.js
+---
+/*
+Technical Constraints:
+- Node.js based implementation
+- In-memory persistence
+- No external APIs or services
+- Focus on domain logic
+*/
+
+git init
+git add .
+git commit -m "Initial commit: courier management domain logic"
+git branch -M main
+git remote add origin <your-repo-url>
+git push -u origin main
+
+Built a Courier Management System in Node.js using in-memory persistence, enforcing strict domain rules such as single active order per courier. (GitHub)
