@@ -1,21 +1,14 @@
-/*
-FEATURE PROOF (Design Intent)
-
-2️⃣ Courier Management
-- Couriers maintained in in-memory array
-- Each courier has id, name, location, availability
-- activeOrderId enforces one active order per courier
-
-3️⃣ Auto-Assignment Logic
-- Implemented in assignment.js
-- Uses deterministic Manhattan distance
-- Returns UNASSIGNED with reason if no courier eligible
-
-4️⃣ Concurrency & Data Safety
-- Assignment protected using isLocked flag
-- Prevents race conditions during order creation
-- Atomic state mutation during assignment
-*/
+/**
+ * index.js is responsible for:
+ * - Runtime orchestration
+ * - State transitions (ASSIGNED → PICKED_UP → DELIVERED)
+ *
+ * Domain rules such as:
+ * - Courier management
+ * - Auto-assignment
+ * - Concurrency control
+ * are implemented in dedicated modules (assignment.js).
+ */
 /*
  Courier Management System
  Technical Constraints:
