@@ -72,3 +72,13 @@ Courier assignment is performed atomically using in-memory locking to prevent ra
 - Implemented in-memory locking to ensure atomic courier assignment
 - Prevents race conditions during concurrent order creation
 - Ensures a courier can never be assigned to multiple orders simultaneously
+
+## Courier Movement & Order Progression
+
+- Courier movement is simulated step-by-step using a deterministic Manhattan-style approach.
+- The courier moves one unit at a time toward pickup and drop locations.
+- Order state transitions are strictly controlled:
+  - ASSIGNED → PICKED_UP → DELIVERED
+- An order progresses to the next state only when the courier physically reaches the required location.
+- Manual or forced state jumps are prevented by design.
+- Once an order is delivered, the courier is automatically marked available for new assignments.
