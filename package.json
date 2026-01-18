@@ -1,0 +1,10 @@
+```json
+{
+  "name": "courier-management-system",
+  "version": "1.0.0",
+  "description": "Node.js based courier management system focusing on domain logic",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}
