@@ -6,33 +6,34 @@ Technical Constraints:
 - No external APIs
 - Focus on domain logic
 */
-
+const { findNearestCourier } = require("./assignment");
 const couriers = [
   { id: "C1", name: "Amit", location: { x: 1, y: 2 }, isAvailable: true, activeOrderId: null },
   { id: "C2", name: "Neha", location: { x: 5, y: 3 }, isAvailable: true, activeOrderId: null }
 ];
 
-function assignCourier(orderId) {
-  const courier = couriers.find(c => c.isAvailable);
+function createOrder(order) {
+  const courier = findNearestCourier(order, couriers);
+
   if (!courier) {
-    console.log("No courier available");
-    return;
+    console.log("Order unassigned: No eligible courier available");
+    return {
+      status: "UNASSIGNED",
+      reason: "No eligible courier available within distance constraints"
+    };
   }
+
   courier.isAvailable = false;
-  courier.activeOrderId = orderId;
-  console.log(`Courier ${courier.name} assigned to order ${orderId}`);
+  courier.activeOrderId = order.id;
+
+  console.log(`Courier ${courier.name} assigned to order ${order.id}`);
+  return { status: "ASSIGNED", courierId: courier.id };
 }
 
-function completeOrder(orderId) {
-  const courier = couriers.find(c => c.activeOrderId === orderId);
-  if (!courier) return;
-  courier.isAvailable = true;
-  courier.activeOrderId = null;
-  console.log(`Order ${orderId} completed`);
-}
+const order = {
+  id: "O101",
+  location: { x: 2, y: 3 },
+  type: "EXPRESS"
+};
 
-// Demo
-assignCourier("O1");
-assignCourier("O2");
-completeOrder("O1");
-assignCourier("O2");
+createOrder(order);
