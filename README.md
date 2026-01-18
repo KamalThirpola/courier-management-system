@@ -69,3 +69,6 @@ If no courier is eligible, the order remains unassigned with a clear reason retu
 
 ### Concurrency & Data Safety
 Courier assignment is performed atomically using in-memory locking to prevent race conditions where a courier could be assigned to multiple orders concurrently.
+- Implemented in-memory locking to ensure atomic courier assignment
+- Prevents race conditions during concurrent order creation
+- Ensures a courier can never be assigned to multiple orders simultaneously
